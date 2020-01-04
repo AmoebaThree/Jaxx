@@ -2,7 +2,7 @@ if __name__ == '__main__':
     import systemd.daemon, initio, redis
 
     print('Startup')
-    initio.init(Servos=True);
+    initio.init(Servos=True)
     initio.setServo(0, 0)
     initio.setServo(1, 0)
     r = redis.Redis(host='192.168.0.1', port=6379, db=0)
