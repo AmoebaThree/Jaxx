@@ -42,7 +42,7 @@ if __name__ == '__main__':
             initio.setServo(1, y_angle)
     except:
         p.close()
-        initio.setServo(0, 0)
-        initio.setServo(1, 0)
+        initio.setServo(0, x['init'])
+        initio.setServo(1, y['init'])
         initio.cleanup()
         print("Goodbye")
