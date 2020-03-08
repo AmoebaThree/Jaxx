@@ -17,7 +17,9 @@ Format: \<channel> "message"
 * \<jaxx> "\<pan_angle>,\<pitch_angle>"
   * Points the head at the specified pan and pitch angles
   * Note that 0,0 is dead ahead
-  * Details to follow on exact range capability
+  * Pan angle range: +- 80
+  * Pitch angle range: +80 to -25
+  * Dead ahead: 0,10
 
 **Outputs**
 
