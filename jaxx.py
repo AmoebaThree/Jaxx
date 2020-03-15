@@ -10,7 +10,8 @@ if __name__ == '__main__':
     initio.init(Servos=True)
     initio.setServo(0, x['init'])
     initio.setServo(1, y['init'])
-    r = redis.Redis(host='192.168.0.1', port=6379, db=0)
+    r = redis.Redis(host='192.168.0.1', port=6379,
+                    db=0, decode_responses=True)
     p = r.pubsub(ignore_subscribe_messages=True)
     p.subscribe('jaxx')
     print('Startup complete')

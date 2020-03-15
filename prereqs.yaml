@@ -1,5 +1,6 @@
 apt:
-  - python-systemd
+  - python3-systemd
+  - python3-rpi.gpio
 pip:
   - redis
 setup:
