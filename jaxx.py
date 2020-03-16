@@ -18,8 +18,9 @@ def execute():
     p = r.pubsub(ignore_subscribe_messages=True)
     p.subscribe('jaxx')
 
-    print('Startup complete')
+    r.publish('services', 'jaxx.on')
     systemd.daemon.notify('READY=1')
+    print('Startup complete')
 
     try:
         for message in p.listen():
@@ -47,9 +48,12 @@ def execute():
             initio.setServo(1, y_angle)
     except:
         p.close()
+
         initio.setServo(0, x['init'])
         initio.setServo(1, y['init'])
         initio.cleanup()
+
+        r.publish('services', 'jaxx.off')
         print('Goodbye')
 
 
