@@ -1,25 +1,29 @@
-if __name__ == '__main__':
-    import systemd.daemon
-    import initio
-    import redis
+import systemd.daemon
+import initio
+import redis
+
+
+def execute():
+    print('Startup')
 
     x = {'init': 0, 'max': 80, 'min': -80}
     y = {'init': 10, 'max': 80, 'min': -25}
 
-    print('Startup')
     initio.init(Servos=True)
     initio.setServo(0, x['init'])
     initio.setServo(1, y['init'])
+
     r = redis.Redis(host='192.168.0.1', port=6379,
                     db=0, decode_responses=True)
     p = r.pubsub(ignore_subscribe_messages=True)
     p.subscribe('jaxx')
+
     print('Startup complete')
     systemd.daemon.notify('READY=1')
 
     try:
         for message in p.listen():
-            cmd = message["data"]
+            cmd = message['data']
 
             if cmd == '0':
                 x_angle = x['init']
@@ -46,4 +50,8 @@ if __name__ == '__main__':
         initio.setServo(0, x['init'])
         initio.setServo(1, y['init'])
         initio.cleanup()
-        print("Goodbye")
+        print('Goodbye')
+
+
+if __name__ == '__main__':
+    execute()
