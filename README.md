@@ -15,4 +15,7 @@ Format: \<channel> "message"
 
 **Outputs**
 
-None
+* \<jaxx.head> "\<pan_angle>,\<pitch_angle>"
+  * Outputs the angle the Jaxx head has been set to
+  * This includes any enforcements made, so may not be the same as the input
+  * If `jaxx 0` is provided then it will return you the actual dead ahead angle

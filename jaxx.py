@@ -46,6 +46,8 @@ def execute():
 
             initio.setServo(0, x_angle)
             initio.setServo(1, y_angle)
+
+            r.publish('jaxx.head', str(x_angle) + "," + str(y_angle))
     except:
         p.close()
 
