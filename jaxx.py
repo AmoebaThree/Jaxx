@@ -25,12 +25,18 @@ def execute():
     try:
         r.publish('jaxx.head', str(x['init']) + "," + str(y['init']))
 
+        x_angle = x['init']
+        y_angle = y['init']
+
         for message in p.listen():
             cmd = message['data']
 
             if cmd == '0':
                 x_angle = x['init']
                 y_angle = y['init']
+            elif cmd == '?':
+                # Query mode - don't need to update anything - just pass through
+                pass
             else:
                 angles = cmd.split(',')
                 x_angle = int(angles[0])

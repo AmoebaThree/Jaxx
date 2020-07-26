@@ -15,10 +15,14 @@ Format: \<channel> "message"
 * \<jaxx> "0"
   * Sets to dead ahead
   * Dead ahead is not necessarily 0,0 and this is a shortcut to the configured target
+* \<jaxx> "?"
+  * Queries for the current head location
 
 ### Outputs
 
 * \<jaxx.head> "\<pan_angle>,\<pitch_angle>"
   * Outputs the angle the Jaxx head has been set to
   * This includes any enforcements made, so may not be the same as the input
+  * Doesn't actually measure the head position - only the target angle
   * If `jaxx 0` is the input, then it will return you the actual dead ahead angle
+  * Fired on a state change or in response to a status query
