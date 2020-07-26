@@ -23,6 +23,8 @@ def execute():
     print('Startup complete')
 
     try:
+        r.publish('jaxx.head', str(x['init']) + "," + str(y['init']))
+
         for message in p.listen():
             cmd = message['data']
 
